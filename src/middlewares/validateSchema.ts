@@ -34,7 +34,7 @@ export const validateSchema = (schemaName: SCHEMA) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const valid = ajv.validate(schemaName, req.body);
     if (!valid) {
-      res.status(401).json(errorResponse(ajv.errors!));
+      res.status(400).json(errorResponse(ajv.errors!));
       return;
     }
     next();

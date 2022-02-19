@@ -2,7 +2,7 @@ import { hash } from "argon2";
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { COOKIE_NAME } from "../constants";
-import { User, UserModel } from "../models/user.model";
+import { UserModel } from "../models/user.model";
 
 export const signup = asyncHandler(async (req: Request, res: Response) => {
   const { username, password } = req.body;
@@ -15,11 +15,12 @@ export const signup = asyncHandler(async (req: Request, res: Response) => {
   }
 
   const hashedPassword = await hash(password);
-  const user: User = await UserModel.create({
+  const user = await UserModel.create({
     username,
     password: hashedPassword,
   });
 
+  req.session.userId = user._id;
   res.status(201).json(user);
 });
 
@@ -49,8 +50,8 @@ export const signin = asyncHandler(async (req: Request, res: Response) => {
 
 export const user = asyncHandler(async (req: Request, res: Response) => {
   if (!req.currentUser) {
-    res.status(404);
-    throw new Error("user not found");
+    res.status(401);
+    throw new Error("not authenticated");
   }
   res.json(req.currentUser);
 });

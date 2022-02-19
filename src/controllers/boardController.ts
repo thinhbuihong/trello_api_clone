@@ -17,10 +17,10 @@ export const newBoard = expressAsyncHandler(
     const board = await BoardModel.create({ ...req.body, userId });
 
     if (!board) {
-      res.status(422);
+      res.status(400);
       throw new Error("validationn error");
     }
-    res.json(board);
+    res.status(201).json(board);
   }
 );
 
@@ -91,7 +91,7 @@ export const updateBoard = expressAsyncHandler(
       runValidators: true,
     });
     if (!board) {
-      res.status(404);
+      res.status(400);
       throw new Error("board not found");
     }
     res.json(board);

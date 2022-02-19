@@ -25,7 +25,7 @@ export const createCard = expressAsyncHandler(
       res.status(422);
       throw new Error("validation error");
     }
-    res.json(card);
+    res.status(201).json(card);
   }
 );
 //:id

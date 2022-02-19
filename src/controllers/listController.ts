@@ -20,11 +20,11 @@ export const createList = expressAsyncHandler(
       userId,
     });
     if (!list) {
-      res.status(422);
+      res.status(400);
       throw new Error("validation error");
     }
 
-    res.json(list);
+    res.status(201).json(list);
   }
 );
 

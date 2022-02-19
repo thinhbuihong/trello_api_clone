@@ -3,6 +3,7 @@ import session from "express-session";
 import { COOKIE_NAME } from "./constants";
 import { currentUser } from "./middlewares/currentUser";
 import { errorHandler } from "./middlewares/errorHandler";
+import { notFound } from "./middlewares/notFound";
 import { requireAuth } from "./middlewares/requireAuth";
 import boardRouter from "./routes/boardRoute";
 import cardRouter from "./routes/cardRoute";
@@ -31,6 +32,8 @@ app.use("/api/users", userRouter);
 app.use("/api/boards", requireAuth, boardRouter);
 app.use("/api/lists", requireAuth, listRouter);
 app.use("/api/cards", requireAuth, cardRouter);
+
+app.use("/", notFound);
 
 app.use(errorHandler);
 
