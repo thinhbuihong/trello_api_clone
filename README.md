@@ -15,6 +15,7 @@
 - Jest, Supertest
 
 ### ER Diagram
+![ERD_trello](https://user-images.githubusercontent.com/45941660/154795985-c72e9f07-2a0b-4782-a257-13bff5a05acd.png)
 
 ### API Documentation
 - User:  
