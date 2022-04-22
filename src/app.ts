@@ -27,6 +27,9 @@ app.use(
   })
 );
 app.use(currentUser);
+app.use("/", (_req, res) => {
+  res.json("hello hi");
+});
 app.use("/api/users", userRouter);
 app.use("/api/boards", requireAuth, boardRouter);
 app.use("/api/lists", requireAuth, listRouter);
