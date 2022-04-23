@@ -38,7 +38,7 @@ app.use("/api/boards", requireAuth, boardRouter);
 app.use("/api/lists", requireAuth, listRouter);
 app.use("/api/cards", requireAuth, cardRouter);
 app.use("/hi", (_req, res) => {
-  res.json("hello hi");
+  res.json("hello hi 3");
 });
 
 app.use("/", notFound);
