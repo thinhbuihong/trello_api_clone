@@ -26,14 +26,20 @@ app.use(
     },
   })
 );
-app.use(currentUser);
-app.use("/", (_req, res) => {
-  res.json("hello hi");
+
+app.use((req, _res, next) => {
+  req.url = req.url.replace("/trello", "");
+  next();
 });
+
+app.use(currentUser);
 app.use("/api/users", userRouter);
 app.use("/api/boards", requireAuth, boardRouter);
 app.use("/api/lists", requireAuth, listRouter);
 app.use("/api/cards", requireAuth, cardRouter);
+app.use("/hi", (_req, res) => {
+  res.json("hello hi");
+});
 
 app.use("/", notFound);
 

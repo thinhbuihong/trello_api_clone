@@ -1,0 +1,15 @@
+version: '3'
+services:
+  trello:
+    # image: thinhbuihong/trello
+    build:
+      context: .
+      # dockerfile: Dockerfile.dev
+    # ports:
+    #   - "3000:4000"
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
