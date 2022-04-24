@@ -10,7 +10,7 @@ export const errorHandler = (
   //   return res.status(err.statusCode).send({ errors: err.serializeErrors() });
   // }
 
-  console.error(err);
+  console.error("===", err.name, err.message);
   res.send({
     message: err.message,
   });
