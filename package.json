@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
+<<<<<<< Updated upstream
     "test": "jest --watchAll --no-cache",
     "test:ci": "jest --no-cache --maxConcurrency=8 --coverage",
+=======
+    "test": "jest --watchAll --maxConcurrency=8  --no-cache",
+    "test:ci": "jest --no-cache --coverage",
+>>>>>>> Stashed changes
     "build": "rm -rf dist && tsc -p .",
     "start:pro": "node dist/index.js"
   },
