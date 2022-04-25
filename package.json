@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache",
-    "test:ci": "jest",
+    "test:ci": "rm -rf ./coverage && jest --coverage",
     "build": "rm -rf dist && tsc -p .",
     "start:pro": "node dist/index.js"
   },
