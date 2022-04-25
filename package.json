@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache",
-    "test:ci": "rm -rf ./coverage && jest --coverage",
+    "test:ci": "rm -rf ./coverage && jest --coverage --detectOpenHandles --forceExit",
     "build": "rm -rf dist && tsc -p .",
     "start:pro": "node dist/index.js"
   },
